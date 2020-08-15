@@ -6,8 +6,13 @@ let switched = false
 
 button.addEventListener('click', function (e) {
   switched = !switched
-  if (switched) container.classList.remove('hidden')
-  else container.classList.add('hidden')
+  if (switched) {
+    container.classList.remove('hidden')
+    container.classList.add('flex')
+  } else {
+    container.classList.add('hidden')
+    container.classList.remove('flex')
+  }
 })
 
 for (const dropdownElement of dropdown) {
@@ -28,11 +33,13 @@ window.addEventListener('resize', function (e) {
     if (!switched) {
       switched = true
       container.classList.remove('hidden')
+      container.classList.add('flex')
     }
   } else {
     if (switched) {
       switched = false
       container.classList.add('hidden')
+      container.classList.remove('flex')
     }
   }
 })
