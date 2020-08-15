@@ -11,11 +11,15 @@ button.addEventListener('click', function (e) {
 })
 
 for (const dropdownElement of dropdown) {
-  dropdownElement.parentNode.addEventListener('click', function (e) {
-    if (dropdownElement.classList.contains('hidden'))
+  const parent = dropdownElement.parentElement
+  parent.addEventListener('click', function (e) {
+    if (dropdownElement.classList.contains('hidden')) {
       dropdownElement.classList.remove('hidden')
-    else
+      parent.getElementsByTagName('svg')[0].style.transform = 'rotate(90deg)'
+    } else {
       dropdownElement.classList.add('hidden')
+      parent.getElementsByTagName('svg')[0].style.transform = 'rotate(0deg)'
+    }
   })
 }
 
